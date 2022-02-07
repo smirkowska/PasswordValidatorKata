@@ -34,4 +34,22 @@ class PasswordValidatorTest {
         Assertions.assertThat(result).isFalse();
     }
 
+
+    @Test
+    void shouldNotAcceptPasswordLongerThanTwentyCharacters() {
+        String passwordLongerThanTwentyCharacters = "SdaProjectManager1234";
+
+        boolean result = passwordValidator.validate(passwordLongerThanTwentyCharacters);
+
+        Assertions.assertThat(result).isFalse();
+    }
+
+    @Test
+    void shouldAcceptPasswordWithTwentyCharacters() {
+        String passwordWithTwentyCharacters = "12345678901234567890";
+
+        boolean result = passwordValidator.validate(passwordWithTwentyCharacters);
+
+        Assertions.assertThat(result).isTrue();
+    }
 }
